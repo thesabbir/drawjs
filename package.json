@@ -1,0 +1,27 @@
+{
+  "name": "drawjs",
+  "version": "0.0.1",
+  "repository": "https://github.com/thesabbir/drawjs",
+  "author": "Sabbir Ahmed <sabbiirr@gmail.com>",
+  "license": "MIT",
+  "module": "release/drawjs.js",
+  "devDependencies": {
+    "esbuild": "^0.11.21",
+    "@babel/core": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-env": "^7.14.2",
+    "snowpack": "^3.4.0",
+    "@snowpack/plugin-react-refresh": "^2.5.0",
+    "@snowpack/plugin-babel": "^2.1.7",
+    "prettier": "^2.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "build": "node tools/build.js",
+    "start": "node tools/start.js",
+    "clean": "node tools/clean.js"
+  },
+  "dependencies": {
+  }
+}
