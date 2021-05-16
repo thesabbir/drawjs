@@ -1,6 +1,6 @@
 {
   "name": "@thesabbir/drawjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "https://github.com/thesabbir/drawjs",
   "author": "Sabbir Ahmed <sabbiirr@gmail.com>",
   "license": "MIT",
@@ -22,6 +22,5 @@
     "start": "node tools/start.js",
     "clean": "node tools/clean.js"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
