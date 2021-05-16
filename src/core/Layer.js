@@ -1,50 +1,71 @@
-import {LAYER_TYPE} from "../constants";
+import { LAYER_TYPE } from "../constants";
+import { eachToObject, genUUID, mapToArray } from "../helpers";
 
 export class Layer {
-    constructor(name = '') {
-        this._name = ''
-        this._type = LAYER_TYPE
-        this._uuid = Math.random() * 100000
-        this._children = []
-        this._active = false
-    }
+  constructor(name = "new layer") {
+    this._name = name;
+    this._type = LAYER_TYPE;
+    this._uuid = genUUID();
+    this._children = {};
+    this._activeChildren = null;
+    this._active = false;
+    this._attributes = {};
+  }
 
-    set name(name) {
-        this._name = name
-    }
-    get name() {
-        return this._name
-    }
-    set active(active) {
-        this._active = active
-    }
+  set name(name) {
+    this._name = name;
+  }
 
-    get active() {
-        return this._active
-    }
+  get name() {
+    return this._name;
+  }
 
-    get uuid() {
-        return this._uuid
-    }
+  set active(active) {
+    this._active = active;
+  }
 
-    addChildren(children) {
-        this._children.push(children)
-    }
+  get active() {
+    return this._active;
+  }
 
-    get children() {
-        return this._children
-    }
+  get attributes() {
+    return this._attributes;
+  }
 
-    childrenToObject() {
-        return this._children.map(item => item.toObject())
-    }
+  set attributes(attributes) {
+    this._attributes = {
+      ...this._attributes,
+      ...attributes,
+    };
+  }
 
-    toObject() {
-        return {
-            type: this._type,
-            uuid: this._uuid,
-            name: this._name,
-            children: this.childrenToObject()
-        }
-    }
+  get uuid() {
+    return this._uuid;
+  }
+
+  addChildren(children) {
+    this._children[children.uuid] = children;
+    this.activeChildren = children;
+  }
+
+  set activeChildren(children) {
+    this._activeChildren = children.uuid;
+  }
+
+  get activeChildren() {
+    return this._children[this._activeChildren];
+  }
+
+  get children() {
+    return mapToArray(this._children);
+  }
+
+  toObject() {
+    return {
+      type: this._type,
+      uuid: this._uuid,
+      name: this._name,
+      children: eachToObject(this.children),
+    };
+  }
 }

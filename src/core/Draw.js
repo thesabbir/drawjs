@@ -1,67 +1,46 @@
-import {Layer} from "./Layer";
-import {toSVGView} from "../utils/toSVG";
+import { DrawFile } from "./DrawFile";
+import { mapToArray } from "../helpers";
 
 export class Draw {
-    constructor(rootElm) {
-        this._state = {}
-        this._layers = {}
-        this._activeLayer = null
-        this._rootElm = rootElm
-    }
+  constructor(rootElm) {
+    this._rootElm = rootElm;
+    this._files = {};
+    this._activeFile = {};
+  }
 
-    get state() {
-        return this._state;
-    }
+  get files() {
+    return mapToArray(this._files);
+  }
 
-    set state(data) {
-        this._state = data
-    }
+  newFile(name) {
+    const file = new DrawFile(name);
+    this._files[file.uuid] = file;
+    this._activeFile = file.uuid;
+    return file;
+  }
 
-    get layers() {
-        return Object.keys(this._layers).map(k => this._layers[k])
-    }
+  get activeFile() {
+    return this._files[this._activeFile];
+  }
 
-    get activeLayer() {
-        return this._layers[this._activeLayer]
-    }
+  set activeFile(file) {
+    return this._files[file.uuid];
+  }
 
-    set activeLayer(layer) {
-        this._activeLayer = layer.uuid
-    }
+  draw(shape) {
+    this.activeFile.draw(shape, this._renderDom.bind(this));
+    this._renderDom();
+  }
 
-    addLayer(layer = new Layer()) {
-        this._layers[layer.uuid] = layer;
-        this._activeLayer = layer.uuid
+  _renderDom(content = this.activeFile.toSVG()) {
+    if (!this._rootElm) {
+      return new Error("Root element not found");
     }
+    this._rootElm.replaceChildren(content);
+  }
 
-    draw(shape) {
-        shape.onViewUpdate((shape) => {
-            this.updateView();
-        })
-
-        this.activeLayer.addChildren(shape)
-        this.updateView()
-    }
-
-    updateView() {
-        this.makeView()
-        if (this._rootElm) {
-            this.renderDom()
-        } else {
-            new Error("Root element not found")
-        }
-    }
-
-    makeView() {
-        this._viewObject = this.layers.map(i => i.toObject())
-    }
-
-    renderDom() {
-        this._svg = toSVGView(this._viewObject)
-        this._rootElm.innerHTML = this._svg
-    }
-
-    setup() {
-        this.addLayer(new Layer('layer 1'))
-    }
+  setup() {
+    this.newFile();
+    this._renderDom();
+  }
 }
