@@ -2,10 +2,8 @@ import { Shape } from "./Shape";
 import { CIRCLE_TYPE } from "../constants";
 
 export class Circle extends Shape {
-  constructor(x, y, r) {
-    super();
-    this.type = CIRCLE_TYPE;
-    this.setAttributes({
+  constructor(x = 0, y = 0, r = 0) {
+    super(CIRCLE_TYPE, {
       x,
       y,
       r,
@@ -19,6 +17,7 @@ export class Circle extends Shape {
   get r() {
     return this.attributes.r;
   }
+
   set x(x) {
     this.setAttributes({ x });
   }
@@ -45,6 +44,6 @@ export class Circle extends Shape {
   }
 
   clone() {
-    return new Circle(...Object.values(this.attributes));
+    return new Circle(this.attributes.x, this.attributes.y, this.attributes.r);
   }
 }

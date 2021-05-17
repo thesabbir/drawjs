@@ -27,10 +27,7 @@ const config = createConfiguration({
     output: "dashboard",
     port: 3100,
   },
-  packageOptions: {
-    knownEntrypoints: ["react/jsx-runtime"],
-  },
-  plugins: ["@snowpack/plugin-react-refresh", "@snowpack/plugin-babel"],
+  plugins: ["@snowpack/plugin-react-refresh", "@snowpack/plugin-typescript"],
 });
 
 startServer({ config })

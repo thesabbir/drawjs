@@ -1,7 +1,13 @@
 import createElement from "./createElement";
 import createSVG from "./createSVG";
+import type { Attributes, ShapeObject } from "../objects/Shape";
+import type { LayerObject } from "../core/Layer";
+import type { DrawFileObject } from "../core/DrawFile";
 
-export const setAttributes = (element, attributes) => {
+export const setAttributes = (
+  element: SVGElement,
+  attributes: Attributes<any>
+) => {
   for (let i = 0, keys = Object.keys(attributes); i < keys.length; i++) {
     let value = attributes[keys[i]];
     element.setAttributeNS(null, keys[i], value);
@@ -9,7 +15,7 @@ export const setAttributes = (element, attributes) => {
   return element;
 };
 
-export const objectToNode = (children) => {
+export const objectToNode = (children: ShapeObject[]) => {
   const childNodes = new DocumentFragment();
   for (let i = 0; i < children.length; i++) {
     const node = children[i];
@@ -20,13 +26,10 @@ export const objectToNode = (children) => {
   return childNodes;
 };
 
-export const objectToGroup = (layer) =>
-  setAttributes(createElement(layer.type), {
-    ...layer.attributes,
-    id: layer.uuid,
-  });
+export const objectToGroup = (layer: LayerObject) =>
+  setAttributes(createElement(layer.type), layer.attributes);
 
-export const layerToSVG = (layers) => {
+export const layerToSVG = (layers: LayerObject[]) => {
   const layerNodes = new DocumentFragment();
   for (let i = 0; i < layers.length; i++) {
     const layer = layers[i];
@@ -37,12 +40,12 @@ export const layerToSVG = (layers) => {
   return layerNodes;
 };
 
-export const documentToSVG = (viewObject) => {
-  const svg = createSVG({ id: viewObject.uuid });
-  svg.appendChild(layerToSVG(viewObject.layers));
+export const documentToSVG = ({ id, layers }: DrawFileObject): SVGElement => {
+  const svg = createSVG({ id });
+  svg.appendChild(layerToSVG(layers));
   return svg;
 };
 
-export const toSVGView = (viewObject) => {
-  return documentToSVG(viewObject);
+export const toSVGView = (file: DrawFileObject) => {
+  return documentToSVG(file);
 };
