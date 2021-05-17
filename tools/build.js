@@ -15,7 +15,7 @@ esbuild
     bundle: true,
     banner: { js: banner },
     outfile: pathConfig.outFile,
-    target: ["es2020"],
+    target: ["es2015"],
     format: "esm",
   })
   .catch(() => process.exit(1));
@@ -28,7 +28,7 @@ esbuild
     sourcemap: true,
     banner: { js: banner },
     outfile: pathConfig.outMinFile,
-    target: ["es2020"],
+    target: ["es2015"],
     format: "esm",
   })
   .catch(() => process.exit(1));
