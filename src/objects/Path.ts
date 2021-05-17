@@ -2,10 +2,8 @@ import { Shape } from "./Shape";
 import { PATH_TYPE } from "../constants";
 
 export class Path extends Shape {
-  constructor(d) {
-    super();
-    this.type = PATH_TYPE;
-    this.setAttributes({ d });
+  constructor(d = "") {
+    super(PATH_TYPE, { d });
   }
 
   set d(d) {
@@ -17,6 +15,6 @@ export class Path extends Shape {
   }
 
   clone() {
-    return new Path(...Object.values(this.attributes));
+    return new Path(this.attributes.d);
   }
 }
