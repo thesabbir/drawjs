@@ -1,17 +1,14 @@
-import { Point } from "./Point";
 import { genUUID } from "../helpers";
 
-export class Shape extends Point {
-  constructor(x = 0, y = 0) {
-    super(x, y);
-
+export class Shape {
+  constructor() {
     this._uuid = genUUID();
-    this._attributes = this.attributes || {};
-
+    this._attributes = {};
+    this._type = null;
     return new Proxy(this, {
       set: (target, key, value) => {
         target[key] = value;
-        if (target._updateView) target._updateView(target);
+        target.onViewUpdate(target);
         return true;
       },
     });
@@ -21,34 +18,52 @@ export class Shape extends Point {
     return this._attributes;
   }
 
-  set attributes(attributesObject) {
+  setAttributes(attributes) {
     this._attributes = {
       ...this._attributes,
-      ...attributesObject,
+      ...attributes,
     };
   }
 
-  set fill(color) {
-    this._attributes.fill = color;
+  set fill(fill) {
+    this.setAttributes({ fill });
   }
 
-  set stroke(color) {
-    this._attributes.stroke = color;
+  set stroke(stroke) {
+    this.setAttributes({ stroke });
   }
 
-  set strokeWidth(width) {
-    this._attributes.strokeWidth = width;
+  set strokeWidth(strokeWidth) {
+    this.setAttributes({ strokeWidth });
   }
 
-  set transform(properties) {
-    this._attributes.transform = properties;
+  set transform(transform) {
+    this.setAttributes({ transform });
   }
 
   get uuid() {
     return this._uuid;
   }
 
-  onViewUpdate(f) {
-    this._updateView = f;
+  set type(type) {
+    this._type = type;
   }
+
+  get type() {
+    return this._type;
+  }
+
+  transformAttributes() {
+    return this.attributes;
+  }
+
+  toObject() {
+    return {
+      type: this._type,
+      uuid: this.uuid,
+      attributes: this.transformAttributes(),
+    };
+  }
+
+  onViewUpdate() {}
 }

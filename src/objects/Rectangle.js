@@ -3,42 +3,41 @@ import { RECT_TYPE } from "../constants";
 
 export class Rectangle extends Shape {
   constructor(x, y, height, width) {
-    super(x, y);
-    this._type = RECT_TYPE;
-    this._attributes = this._attributes || {};
-    this._attributes.height = height;
-    this._attributes.width = width;
+    super();
+    super.setAttributes({
+      x,
+      y,
+      height,
+      width,
+    });
+    this.type = RECT_TYPE;
   }
 
   set height(height) {
-    this._attributes.height = height;
+    this.setAttributes({ height });
   }
 
   set width(width) {
-    this._attributes.width = width;
+    this.setAttributes({ width });
   }
 
   get height() {
-    return this._attributes.height;
-  }
-  get width() {
-    return this._attributes.width;
+    return this.attributes.height;
   }
 
-  toObject() {
-    return {
-      type: this._type,
-      uuid: this.uuid,
-      attributes: this.attributes,
-    };
+  get width() {
+    return this.attributes.width;
+  }
+
+  set x(x) {
+    this.setAttributes({ x });
+  }
+
+  set y(y) {
+    this.setAttributes({ y });
   }
 
   clone() {
-    return new Rectangle(
-      this._attributes.x,
-      this._attributes.y,
-      this._attributes.height,
-      this._attributes.width
-    );
+    return new Rectangle(...Object.values(this.attributes));
   }
 }
