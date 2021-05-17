@@ -2,7 +2,7 @@ import { DrawFile } from "./DrawFile";
 import type { Shape } from "../objects/Shape";
 
 /**
- * Code blocks are great for examples
+ * Usage Example
  *
  * ```typescript
  * import { Draw } from '@thesabbir/drawjs';

@@ -1,0 +1,8 @@
+{
+  "excludeExternals": true,
+  "excludePrivate": false,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "disableSources": true,
+  "readme": "none"
+}

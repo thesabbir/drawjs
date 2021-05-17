@@ -23,7 +23,7 @@
     "build": "node tools/build.js",
     "start": "node tools/start.js",
     "clean": "node tools/clean.js",
-    "fmt": "prettier --write src/**/* examples/**/* tools/**/*",
+    "fmt": "prettier --write src/**/* examples/**/* tools/**/* website/**/*.js",
     "prepare": "npm run build && husky install",
     "postversion": "git push && git push --tags",
     "postinstall": "husky install",
