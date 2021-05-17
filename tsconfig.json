@@ -17,5 +17,13 @@
     "importsNotUsedAsValues": "error",
     "isolatedModules": true,
     "esModuleInterop": false
+  },
+  "typedocOptions": {
+    "excludeExternals": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "excludeInternal": true,
+    "disableSources": true,
+    "readme": "none"
   }
 }

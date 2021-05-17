@@ -32,39 +32,21 @@ const draw = new Draw(rootElement);
 
 **Returns:** [*Draw*](draw.md)
 
-## Properties
-
-### \_activeFile
-
-• `Private` **\_activeFile**: *DrawFile*
-
-___
-
-### \_files
-
-• `Private` `Readonly` **\_files**: *Map*<DrawFile, DrawFile\>
-
-___
-
-### \_rootElm
-
-• `Private` `Readonly` **\_rootElm**: HTMLDivElement
-
 ## Accessors
 
 ### activeFile
 
-• get **activeFile**(): *DrawFile*
+• get **activeFile**(): [*DrawFile*](drawfile.md)
 
-**Returns:** *DrawFile*
+**Returns:** [*DrawFile*](drawfile.md)
 
-• set **activeFile**(`file`: *DrawFile*): *void*
+• set **activeFile**(`file`: [*DrawFile*](drawfile.md)): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `file` | *DrawFile* |
+| `file` | [*DrawFile*](drawfile.md) |
 
 **Returns:** *void*
 
@@ -72,25 +54,11 @@ ___
 
 ### files
 
-• get **files**(): *DrawFile*[]
+• get **files**(): [*DrawFile*](drawfile.md)[]
 
-**Returns:** *DrawFile*[]
+**Returns:** [*DrawFile*](drawfile.md)[]
 
 ## Methods
-
-### \_renderDom
-
-▸ `Private` **_renderDom**(`content?`: SVGElement): *undefined* \| Error
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `content` | SVGElement |
-
-**Returns:** *undefined* \| Error
-
-___
 
 ### draw
 
@@ -115,13 +83,5 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `name` | *string* |
-
-**Returns:** *void*
-
-___
-
-### removeAllChildren
-
-▸ `Private` **removeAllChildren**(): *void*
 
 **Returns:** *void*

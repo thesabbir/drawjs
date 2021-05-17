@@ -40,6 +40,7 @@ export class DrawFile {
   set name(name) {
     this._name = name;
   }
+
   get uuid() {
     return this._uuid;
   }

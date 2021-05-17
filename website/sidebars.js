@@ -23,12 +23,23 @@ module.exports = {
     },
     {
       type: "category",
-      label: "References",
+      label: "References (Drawing)",
       items: [
         "api/classes/draw",
         "api/classes/rectangle",
         "api/classes/circle",
         "api/classes/path",
+      ],
+    },
+    {
+      type: "category",
+      label: "References (File/Node)",
+      items: [
+        "api/classes/drawfile",
+        "api/interfaces/drawfileobject",
+        "api/classes/layer",
+        "api/interfaces/layerobject",
+        "api/modules/domhelpers",
       ],
     },
   ],
