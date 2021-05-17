@@ -3,33 +3,48 @@ import { CIRCLE_TYPE } from "../constants";
 
 export class Circle extends Shape {
   constructor(x, y, r) {
-    super(x, y);
-    this._type = CIRCLE_TYPE;
-    this._attributes = this._attributes || {};
-    this._attributes.r = r;
+    super();
+    this.type = CIRCLE_TYPE;
+    this.setAttributes({
+      x,
+      y,
+      r,
+    });
   }
 
   set r(r) {
-    this._attributes.r = r;
+    this.setAttributes({ r });
   }
 
   get r() {
-    return this._attributes.r;
+    return this.attributes.r;
+  }
+  set x(x) {
+    this.setAttributes({ x });
   }
 
-  toObject() {
+  get x() {
+    return this.attributes.x;
+  }
+
+  set y(y) {
+    this.setAttributes({ y });
+  }
+
+  get y() {
+    return this.attributes.y;
+  }
+
+  transformAttributes() {
+    const { x, y, ...attributes } = this.attributes;
     return {
-      type: this._type,
-      uuid: this.uuid,
-      attributes: this.attributes,
+      cx: x,
+      cy: y,
+      ...attributes,
     };
   }
 
   clone() {
-    return new Circle(
-      this._attributes.x,
-      this._attributes.y,
-      this._attributes.r
-    );
+    return new Circle(...Object.values(this.attributes));
   }
 }

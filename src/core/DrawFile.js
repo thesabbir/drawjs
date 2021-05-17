@@ -50,9 +50,7 @@ export class DrawFile {
 
   draw(shape, requestRender) {
     this.activeLayer.addChildren(shape);
-    shape.onViewUpdate(() => {
-      requestRender(this.toSVG());
-    });
+    shape.onViewUpdate = () => requestRender();
   }
 
   toObject() {

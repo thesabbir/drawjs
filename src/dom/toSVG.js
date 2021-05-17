@@ -1,24 +1,5 @@
 import createElement from "./createElement";
 import createSVG from "./createSVG";
-import { CIRCLE_TYPE } from "../constants";
-
-export const transformNodeAttribute = (node) => {
-  switch (node.type) {
-    case CIRCLE_TYPE:
-      const { x, y } = node.attributes;
-      return {
-        id: node.uuid,
-        cx: x,
-        cy: y,
-        ...node.attributes,
-      };
-    default:
-      return {
-        id: node.uuid,
-        ...node.attributes,
-      };
-  }
-};
 
 export const setAttributes = (element, attributes) => {
   for (let i = 0, keys = Object.keys(attributes); i < keys.length; i++) {
@@ -32,8 +13,9 @@ export const objectToNode = (children) => {
   const childNodes = new DocumentFragment();
   for (let i = 0; i < children.length; i++) {
     const node = children[i];
-    const attributes = transformNodeAttribute(node);
-    childNodes.appendChild(setAttributes(createElement(node.type), attributes));
+    childNodes.appendChild(
+      setAttributes(createElement(node.type), node.attributes)
+    );
   }
   return childNodes;
 };
