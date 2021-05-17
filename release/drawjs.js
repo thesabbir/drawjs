@@ -1,10 +1,11 @@
 
-// @thesabbir/drawjs 0.0.2
+// @thesabbir/drawjs 0.0.3
 // MIT
 // https://github.com/thesabbir/drawjs
 
 // src/constants.js
 var RECT_TYPE = `rect`;
+var CIRCLE_TYPE = `circle`;
 var LAYER_TYPE = `g`;
 var NAMESPACE = `http://www.w3.org/2000/svg`;
 
@@ -95,6 +96,23 @@ function createSVG(attributes = {}) {
 }
 
 // src/dom/toSVG.js
+var transformNodeAttribute = (node) => {
+  switch (node.type) {
+    case CIRCLE_TYPE:
+      const {x, y} = node.attributes;
+      return {
+        id: node.uuid,
+        cx: x,
+        cy: y,
+        ...node.attributes
+      };
+    default:
+      return {
+        id: node.uuid,
+        ...node.attributes
+      };
+  }
+};
 var setAttributes = (element, attributes) => {
   for (let i = 0, keys = Object.keys(attributes); i < keys.length; i++) {
     let value = attributes[keys[i]];
@@ -106,10 +124,8 @@ var objectToNode = (children) => {
   const childNodes = new DocumentFragment();
   for (let i = 0; i < children.length; i++) {
     const node = children[i];
-    childNodes.appendChild(setAttributes(createElement(node.type), {
-      ...node.attributes,
-      id: node.uuid
-    }));
+    const attributes = transformNodeAttribute(node);
+    childNodes.appendChild(setAttributes(createElement(node.type), attributes));
   }
   return childNodes;
 };
@@ -333,7 +349,34 @@ var Rectangle = class extends Shape {
     return new Rectangle(this._attributes.x, this._attributes.y, this._attributes.height, this._attributes.width);
   }
 };
+
+// src/objects/Circle.js
+var Circle = class extends Shape {
+  constructor(x, y, r) {
+    super(x, y);
+    this._type = CIRCLE_TYPE;
+    this._attributes = this._attributes || {};
+    this._attributes.r = r;
+  }
+  set r(r) {
+    this._attributes.r = r;
+  }
+  get r() {
+    return this._attributes.r;
+  }
+  toObject() {
+    return {
+      type: this._type,
+      uuid: this.uuid,
+      attributes: this.attributes
+    };
+  }
+  clone() {
+    return new Circle(this._attributes.x, this._attributes.y, this._attributes.r);
+  }
+};
 export {
+  Circle,
   Draw,
   Rectangle
 };
