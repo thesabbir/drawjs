@@ -22,6 +22,10 @@ Docs: WIP
 ### Not remotely ready for production
 
 
-- [ ] API Docs
-- [ ] Stable API
-- [ ] Performance enhancements
+- [x] BASIC API Docs
+- [x] Stable API
+- [x] Performance enhancements
+- [ ] Drawing Tools
+- [ ] Animation
+- [ ] Tutorials
+- [ ] Playground
