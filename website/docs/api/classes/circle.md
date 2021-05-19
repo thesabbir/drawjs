@@ -34,11 +34,11 @@ Overrides: Shape.constructor
 
 ## Accessors
 
-### attributes
+### attr
 
-• get **attributes**(): *Attributes*<any\>
+• get **attr**(): Attributes
 
-**Returns:** *Attributes*<any\>
+**Returns:** Attributes
 
 ___
 
@@ -56,19 +56,37 @@ ___
 
 ___
 
-### r
+### name
 
-• get **r**(): *any*
+• get **name**(): *string*
 
-**Returns:** *any*
+**Returns:** *string*
 
-• set **r**(`r`: *any*): *void*
+• set **name**(`name`: *string*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `r` | *any* |
+| `name` | *string* |
+
+**Returns:** *void*
+
+___
+
+### r
+
+• get **r**(): *number*
+
+**Returns:** *number*
+
+• set **r**(`r`: *number*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `r` | *number* |
 
 **Returns:** *void*
 
@@ -134,17 +152,17 @@ ___
 
 ### x
 
-• get **x**(): *any*
+• get **x**(): *number*
 
-**Returns:** *any*
+**Returns:** *number*
 
-• set **x**(`x`: *any*): *void*
+• set **x**(`x`: *number*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `x` | *any* |
+| `x` | *number* |
 
 **Returns:** *void*
 
@@ -152,17 +170,17 @@ ___
 
 ### y
 
-• get **y**(): *any*
+• get **y**(): *number*
 
-**Returns:** *any*
+**Returns:** *number*
 
-• set **y**(`y`: *any*): *void*
+• set **y**(`y`: *number*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `y` | *any* |
+| `y` | *number* |
 
 **Returns:** *void*
 
@@ -188,13 +206,13 @@ ___
 
 ### setAttributes
 
-▸ **setAttributes**(`attributes`: *object*): *void*
+▸ **setAttributes**(`attr`: Attributes): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `attributes` | *object* |
+| `attr` | Attributes |
 
 **Returns:** *void*
 
@@ -220,7 +238,16 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cx` | *any* |
-| `cy` | *any* |
+| `cx` | *undefined* \| *number* |
+| `cy` | *undefined* \| *number* |
+| `d?` | *string* |
+| `fill?` | *string* |
+| `height?` | *number* |
+| `id?` | *string* |
+| `r?` | *number* |
+| `stroke?` | *number* |
+| `strokeWidth?` | *number* |
+| `transform?` | *string* |
+| `width?` | *number* |
 
 Overrides: Shape.transformAttributes

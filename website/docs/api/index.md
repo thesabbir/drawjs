@@ -9,10 +9,6 @@ custom_edit_url: null
 
 # @thesabbir/drawjs
 
-## Namespaces
-
-- [domHelpers](modules/domhelpers.md)
-
 ## Classes
 
 - [Circle](classes/circle.md)
@@ -21,8 +17,3 @@ custom_edit_url: null
 - [Layer](classes/layer.md)
 - [Path](classes/path.md)
 - [Rectangle](classes/rectangle.md)
-
-## Interfaces
-
-- [DrawFileObject](interfaces/drawfileobject.md)
-- [LayerObject](interfaces/layerobject.md)

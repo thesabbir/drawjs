@@ -1,3 +1,4 @@
+export const SVG_TYPE = `svg`;
 export const RECT_TYPE = `rect`;
 export const CIRCLE_TYPE = `circle`;
 export const PATH_TYPE = `path`;

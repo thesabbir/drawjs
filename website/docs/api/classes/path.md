@@ -32,27 +32,27 @@ Overrides: Shape.constructor
 
 ## Accessors
 
-### attributes
+### attr
 
-• get **attributes**(): *Attributes*<any\>
+• get **attr**(): Attributes
 
-**Returns:** *Attributes*<any\>
+**Returns:** Attributes
 
 ___
 
 ### d
 
-• get **d**(): *any*
+• get **d**(): *string*
 
-**Returns:** *any*
+**Returns:** *string*
 
-• set **d**(`d`: *any*): *void*
+• set **d**(`d`: *string*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `d` | *any* |
+| `d` | *string* |
 
 **Returns:** *void*
 
@@ -67,6 +67,24 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `fill` | *string* |
+
+**Returns:** *void*
+
+___
+
+### name
+
+• get **name**(): *string*
+
+**Returns:** *string*
+
+• set **name**(`name`: *string*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | *string* |
 
 **Returns:** *void*
 
@@ -150,13 +168,13 @@ ___
 
 ### setAttributes
 
-▸ **setAttributes**(`attributes`: *object*): *void*
+▸ **setAttributes**(`attr`: Attributes): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `attributes` | *object* |
+| `attr` | Attributes |
 
 **Returns:** *void*
 
@@ -176,8 +194,8 @@ ___
 
 ### transformAttributes
 
-▸ **transformAttributes**(): *Attributes*<any\>
+▸ **transformAttributes**(): Attributes
 
-**Returns:** *Attributes*<any\>
+**Returns:** Attributes
 
 Inherited from: Shape.transformAttributes

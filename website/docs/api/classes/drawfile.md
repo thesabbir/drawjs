@@ -8,45 +8,100 @@ custom_edit_url: null
 
 # Class: DrawFile
 
+## Hierarchy
+
+- *ShapeContainer*
+
+  ↳ **DrawFile**
+
 ## Constructors
 
 ### constructor
 
-\+ **new DrawFile**(`name?`: *string*): [*DrawFile*](drawfile.md)
+\+ **new DrawFile**(`name?`: *string*, `rootElm`: HTMLElement): [*DrawFile*](drawfile.md)
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `name` | *string* | "Untitled.svg" |
+| `rootElm` | HTMLElement | - |
 
 **Returns:** [*DrawFile*](drawfile.md)
 
-## Accessors
+Overrides: ShapeContainer.constructor
+
+## Properties
+
+### \_rootElm
+
+• **\_rootElm**: HTMLElement
+
+___
+
+### \_svgFile
+
+• **\_svgFile**: SVGElement
+
+___
 
 ### activeLayer
 
-• get **activeLayer**(): [*Layer*](layer.md)
+• **activeLayer**: [*Layer*](layer.md)
 
-**Returns:** [*Layer*](layer.md)
+___
 
-• set **activeLayer**(`layer`: [*Layer*](layer.md)): *void*
+### vTree
+
+• **vTree**: ShapeChildren
+
+## Accessors
+
+### active
+
+• get **active**(): *boolean*
+
+**Returns:** *boolean*
+
+• set **active**(`active`: *boolean*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `layer` | [*Layer*](layer.md) |
+| `active` | *boolean* |
 
 **Returns:** *void*
 
 ___
 
-### layers
+### attr
 
-• get **layers**(): [*Layer*](layer.md)[]
+• get **attr**(): Attributes
 
-**Returns:** [*Layer*](layer.md)[]
+**Returns:** Attributes
+
+___
+
+### children
+
+• get **children**(): *Shape*[]
+
+**Returns:** *Shape*[]
+
+___
+
+### fill
+
+• set **fill**(`fill`: *string*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `fill` | *string* |
+
+**Returns:** *void*
 
 ___
 
@@ -86,6 +141,56 @@ ___
 
 ___
 
+### stroke
+
+• set **stroke**(`stroke`: *number*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `stroke` | *number* |
+
+**Returns:** *void*
+
+___
+
+### strokeWidth
+
+• set **strokeWidth**(`strokeWidth`: *number*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `strokeWidth` | *number* |
+
+**Returns:** *void*
+
+___
+
+### transform
+
+• set **transform**(`transform`: *string*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `transform` | *string* |
+
+**Returns:** *void*
+
+___
+
+### type
+
+• get **type**(): *string*
+
+**Returns:** *string*
+
+___
+
 ### uuid
 
 • get **uuid**(): *string*
@@ -94,9 +199,25 @@ ___
 
 ## Methods
 
+### addChildren
+
+▸ **addChildren**(`children`: *Shape*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `children` | *Shape* |
+
+**Returns:** *void*
+
+Inherited from: ShapeContainer.addChildren
+
+___
+
 ### addLayer
 
-▸ **addLayer**(`layer?`: [*Layer*](layer.md)): *void*
+▸ **addLayer**(`layer`: [*Layer*](layer.md)): *void*
 
 #### Parameters
 
@@ -110,29 +231,68 @@ ___
 
 ### draw
 
-▸ **draw**(`shape`: *Shape*, `requestRender`: Function): *void*
+▸ **draw**(`shape`: *Shape*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `shape` | *Shape* |
-| `requestRender` | Function |
 
 **Returns:** *void*
 
 ___
 
-### toObject
+### drawShape
 
-▸ **toObject**(): [*DrawFileObject*](../interfaces/drawfileobject.md)
+▸ **drawShape**(): *void*
 
-**Returns:** [*DrawFileObject*](../interfaces/drawfileobject.md)
+**Returns:** *void*
+
+Inherited from: ShapeContainer.drawShape
 
 ___
 
-### toSVG
+### onViewUpdate
 
-▸ **toSVG**(): SVGElement
+▸ **onViewUpdate**(): *void*
 
-**Returns:** SVGElement
+**Returns:** *void*
+
+Inherited from: ShapeContainer.onViewUpdate
+
+___
+
+### setAttributes
+
+▸ **setAttributes**(`attr`: Attributes): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `attr` | Attributes |
+
+**Returns:** *void*
+
+Inherited from: ShapeContainer.setAttributes
+
+___
+
+### toObject
+
+▸ **toObject**(): ShapeChildren
+
+**Returns:** ShapeChildren
+
+Overrides: ShapeContainer.toObject
+
+___
+
+### transformAttributes
+
+▸ **transformAttributes**(): Attributes
+
+**Returns:** Attributes
+
+Inherited from: ShapeContainer.transformAttributes

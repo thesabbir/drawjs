@@ -1,4 +1,4 @@
-import { DrawFile } from "./DrawFile";
+import { DrawFile } from "../objects/DrawFile";
 import type { Shape } from "../objects/Shape";
 
 /**
@@ -13,15 +13,14 @@ import type { Shape } from "../objects/Shape";
  * ```
  */
 export class Draw {
-  private readonly _rootElm: HTMLDivElement;
+  private readonly _rootElm: HTMLElement;
   private readonly _files: Map<DrawFile, DrawFile>;
   private _activeFile: DrawFile;
 
   constructor(rootElm: HTMLDivElement) {
     this._rootElm = rootElm;
     this._files = new Map<DrawFile, DrawFile>();
-    this._activeFile = new DrawFile();
-    this._renderDom();
+    this._activeFile = new DrawFile("Untitled.svg", rootElm);
   }
 
   get files() {
@@ -29,7 +28,7 @@ export class Draw {
   }
 
   newFile(name: string) {
-    const file = new DrawFile(name);
+    const file = new DrawFile(name, this._rootElm);
     this._files.set(file, file);
     this._activeFile = file;
   }
@@ -43,21 +42,6 @@ export class Draw {
   }
 
   draw(shape: Shape) {
-    this.activeFile.draw(shape, this._renderDom.bind(this));
-    this._renderDom();
-  }
-
-  private removeAllChildren() {
-    while (this._rootElm.firstChild) {
-      this._rootElm.removeChild(this._rootElm.firstChild);
-    }
-  }
-
-  private _renderDom(content = this.activeFile.toSVG()) {
-    if (!this._rootElm) {
-      return new Error("Root element not found");
-    }
-    this.removeAllChildren();
-    this._rootElm.appendChild(content);
+    this.activeFile.draw(shape);
   }
 }

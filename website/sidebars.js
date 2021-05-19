@@ -34,13 +34,7 @@ module.exports = {
     {
       type: "category",
       label: "References (File/Node)",
-      items: [
-        "api/classes/drawfile",
-        "api/interfaces/drawfileobject",
-        "api/classes/layer",
-        "api/interfaces/layerobject",
-        "api/modules/domhelpers",
-      ],
+      items: ["api/classes/drawfile", "api/classes/layer"],
     },
   ],
 };

@@ -8,6 +8,12 @@ custom_edit_url: null
 
 # Class: Layer
 
+## Hierarchy
+
+- *ShapeContainer*
+
+  ↳ **Layer**
+
 ## Constructors
 
 ### constructor
@@ -18,9 +24,11 @@ custom_edit_url: null
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `name` | *string* | "new layer" |
+| `name` | *string* | "New Layer" |
 
 **Returns:** [*Layer*](layer.md)
+
+Overrides: ShapeContainer.constructor
 
 ## Accessors
 
@@ -42,44 +50,11 @@ custom_edit_url: null
 
 ___
 
-### activeChildren
+### attr
 
-• get **activeChildren**(): *Shape*
+• get **attr**(): Attributes
 
-**Returns:** *Shape*
-
-• set **activeChildren**(`children`: *Shape*): *void*
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `children` | *Shape* |
-
-**Returns:** *void*
-
-___
-
-### attributes
-
-• get **attributes**(): *object*
-
-**Returns:** *object*
-
-| Name | Type |
-| :------ | :------ |
-| `id` | *string* |
-
-• set **attributes**(`attributes`: { `id`: *string*  }): *void*
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `attributes` | *object* |
-| `attributes.id` | *string* |
-
-**Returns:** *void*
+**Returns:** Attributes
 
 ___
 
@@ -88,6 +63,20 @@ ___
 • get **children**(): *Shape*[]
 
 **Returns:** *Shape*[]
+
+___
+
+### fill
+
+• set **fill**(`fill`: *string*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `fill` | *string* |
+
+**Returns:** *void*
 
 ___
 
@@ -106,6 +95,56 @@ ___
 | `name` | *string* |
 
 **Returns:** *void*
+
+___
+
+### stroke
+
+• set **stroke**(`stroke`: *number*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `stroke` | *number* |
+
+**Returns:** *void*
+
+___
+
+### strokeWidth
+
+• set **strokeWidth**(`strokeWidth`: *number*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `strokeWidth` | *number* |
+
+**Returns:** *void*
+
+___
+
+### transform
+
+• set **transform**(`transform`: *string*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `transform` | *string* |
+
+**Returns:** *void*
+
+___
+
+### type
+
+• get **type**(): *string*
+
+**Returns:** *string*
 
 ___
 
@@ -129,10 +168,89 @@ ___
 
 **Returns:** *void*
 
+Inherited from: ShapeContainer.addChildren
+
+___
+
+### addShape
+
+▸ **addShape**(`shape`: *Shape*): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `shape` | *Shape* |
+
+**Returns:** *void*
+
+___
+
+### draw
+
+▸ **draw**(`shape`: *Shape*, `requestRender`: Function): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `shape` | *Shape* |
+| `requestRender` | Function |
+
+**Returns:** *void*
+
+___
+
+### drawShape
+
+▸ **drawShape**(): *void*
+
+**Returns:** *void*
+
+Inherited from: ShapeContainer.drawShape
+
+___
+
+### onViewUpdate
+
+▸ **onViewUpdate**(): *void*
+
+**Returns:** *void*
+
+Inherited from: ShapeContainer.onViewUpdate
+
+___
+
+### setAttributes
+
+▸ **setAttributes**(`attr`: Attributes): *void*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `attr` | Attributes |
+
+**Returns:** *void*
+
+Inherited from: ShapeContainer.setAttributes
+
 ___
 
 ### toObject
 
-▸ **toObject**(): [*LayerObject*](../interfaces/layerobject.md)
+▸ **toObject**(): ShapeChildren
 
-**Returns:** [*LayerObject*](../interfaces/layerobject.md)
+**Returns:** ShapeChildren
+
+Inherited from: ShapeContainer.toObject
+
+___
+
+### transformAttributes
+
+▸ **transformAttributes**(): Attributes
+
+**Returns:** Attributes
+
+Inherited from: ShapeContainer.transformAttributes

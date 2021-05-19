@@ -1,24 +1,17 @@
 import { genUUID } from "../helpers";
-
-export interface Attributes<T> {
-  // Fixme
-  [key: string]: T;
-}
-
-export interface ShapeObject {
-  type: string;
-  attributes: Attributes<any>;
-}
+import type { Attributes, ShapeObject } from "./types";
 
 export class Shape {
   private readonly _uuid: string;
   private readonly _type: string;
-  private _attributes: Attributes<any>;
+  private _attr: Attributes;
+  private _name: string;
 
-  constructor(type: string, attributes: Attributes<any>) {
+  constructor(name: string, type: string, attr: Attributes = {}) {
     this._uuid = genUUID();
     this._type = type;
-    this._attributes = attributes;
+    this._name = name;
+    this._attr = attr;
     return new Proxy(this, {
       set: (target: Shape, key: keyof Shape, value) => {
         if (target[key] !== null) {
@@ -31,17 +24,17 @@ export class Shape {
     });
   }
 
-  get attributes(): Attributes<any> {
+  get attr(): Attributes {
     return {
       id: this.uuid,
-      ...this._attributes,
+      ...this._attr,
     };
   }
 
-  setAttributes(attributes: object) {
-    this._attributes = {
-      ...this._attributes,
-      ...attributes,
+  setAttributes(attr: Attributes) {
+    this._attr = {
+      ...this._attr,
+      ...attr,
     };
   }
 
@@ -61,6 +54,14 @@ export class Shape {
     this.setAttributes({ transform });
   }
 
+  get name() {
+    return this._name;
+  }
+
+  set name(name) {
+    this._name = name;
+  }
+
   get uuid() {
     return this._uuid;
   }
@@ -70,13 +71,14 @@ export class Shape {
   }
 
   transformAttributes() {
-    return this.attributes;
+    return this.attr;
   }
 
   toObject(): ShapeObject {
     return {
-      type: this._type,
-      attributes: this.transformAttributes(),
+      name: this.name,
+      type: this.type,
+      attr: this.transformAttributes(),
     };
   }
 

@@ -3,7 +3,7 @@ import { RECT_TYPE } from "../constants";
 
 export class Rectangle extends Shape {
   constructor(x = 0, y = 0, height = 0, width = 0) {
-    super(RECT_TYPE, {
+    super(RECT_TYPE, RECT_TYPE, {
       x,
       y,
       height,
@@ -12,8 +12,9 @@ export class Rectangle extends Shape {
   }
 
   get height() {
-    return this.attributes.height;
+    return this.attr.height || 0;
   }
+
   set height(height: number) {
     this.setAttributes({ height });
   }
@@ -23,7 +24,7 @@ export class Rectangle extends Shape {
   }
 
   get width() {
-    return this.attributes.width;
+    return this.attr.width || 0;
   }
 
   set x(x: number) {
@@ -36,10 +37,10 @@ export class Rectangle extends Shape {
 
   clone() {
     return new Rectangle(
-      this.attributes.x,
-      this.attributes.y,
-      this.attributes.height,
-      this.attributes.width
+      this.attr.x,
+      this.attr.y,
+      this.attr.height,
+      this.attr.width
     );
   }
 }

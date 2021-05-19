@@ -3,18 +3,18 @@ import { PATH_TYPE } from "../constants";
 
 export class Path extends Shape {
   constructor(d = "") {
-    super(PATH_TYPE, { d });
+    super(PATH_TYPE, PATH_TYPE, { d });
   }
 
-  set d(d) {
+  set d(d: string) {
     this.setAttributes({ d });
   }
 
   get d() {
-    return this.attributes.d;
+    return this.attr.d || "";
   }
 
   clone() {
-    return new Path(this.attributes.d);
+    return new Path(this.attr.d);
   }
 }
