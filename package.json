@@ -1,6 +1,6 @@
 {
   "name": "@thesabbir/drawjs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "repository": "https://github.com/thesabbir/drawjs",
   "author": "Sabbir Ahmed <sabbiirr@gmail.com>",
   "license": "MIT",
@@ -34,6 +34,5 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
