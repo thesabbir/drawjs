@@ -6,8 +6,10 @@
   "license": "MIT",
   "description": "Vector graphics for modern web browsers",
   "module": "release/drawjs.js",
+  "types": "types/drawjs.d.ts",
   "files": [
-    "release/**/*"
+    "release/**/*",
+    "types/**/*"
   ],
   "devDependencies": {
     "@snowpack/plugin-babel": "^2.1.7",
@@ -20,10 +22,11 @@
     "typescript": "^4.2.4"
   },
   "scripts": {
-    "build": "node tools/build.js",
+    "build": "node tools/build.js && npm run declaration-build",
     "start": "node tools/start.js",
     "clean": "node tools/clean.js",
     "fmt": "prettier --write src/**/* examples/**/* tools/**/* website/**/*.js",
+    "declaration-build": "tsc  --noEmit false --isolatedModules false --declaration --emitDeclarationOnly --outFile types/drawjs.d.ts",
     "prepare": "npm run build && husky install",
     "postversion": "git push && git push --tags",
     "postinstall": "husky install",
