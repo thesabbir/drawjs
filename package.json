@@ -14,12 +14,12 @@
   "devDependencies": {
     "@snowpack/plugin-babel": "^2.1.7",
     "@snowpack/plugin-react-refresh": "^2.5.0",
-    "esbuild": "^0.12.0",
+    "esbuild": "^0.12.7",
     "husky": "^6.0.0",
     "pinst": "^2.1.6",
-    "prettier": "^2.3.0",
-    "snowpack": "^3.4.0",
-    "typescript": "^4.2.4",
+    "prettier": "^2.3.1",
+    "snowpack": "^3.5.6",
+    "typescript": "^4.3.2",
     "@snowpack/plugin-typescript": "^1.2.1"
   },
   "scripts": {
