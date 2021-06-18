@@ -6,7 +6,6 @@ const build = path.join(root, "release");
 const mainFile = path.join(src, "index.ts");
 const outFile = path.join(build, "drawjs.js");
 const outMinFile = path.join(build, "drawjs.min.js");
-
 module.exports = {
   mainFile,
   outFile,

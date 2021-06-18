@@ -1,4 +1,5 @@
-import { Draw, Rectangle, Circle, Path, Layer } from "../src";
+import { Draw, Rectangle, Circle, Path, Layer } from "../../src";
+import "./style.css";
 
 (function App() {
   const root = document.getElementById("root");

@@ -1,14 +1,12 @@
 {
-  "include": ["src"],
+  "files": ["src/index.ts"],
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
     "allowJs": true,
+    "noImplicitAny": true,
     "baseUrl": "./",
-    /* noEmit - Snowpack builds (emits) files, not tsc. */
-    "noEmit": true,
-    /* Additional Options */
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
