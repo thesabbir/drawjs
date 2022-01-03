@@ -12,7 +12,7 @@
     "types/**/*"
   ],
   "devDependencies": {
-    "esbuild": "^0.12.9",
+    "esbuild": "^0.14.10",
     "husky": "^6.0.0",
     "pinst": "^2.1.6",
     "prettier": "^2.3.1",
